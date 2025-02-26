@@ -6,11 +6,11 @@ import { EditRoleUserComponent } from './edit-role-user/edit-role-user.component
 
 @NgModule({
   declarations: [
-    EditRoleUserComponent,  // ✅ Declaramos el componente
+    EditRoleUserComponent, 
   ],
   imports: [
     CommonModule,
-    FormsModule,  // ✅ Importamos FormsModule para habilitar [(ngModel)]
+    FormsModule,  
     RolesRoutingModule
   ]
 })
