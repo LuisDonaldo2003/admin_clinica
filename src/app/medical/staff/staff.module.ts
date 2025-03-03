@@ -5,6 +5,7 @@ import { StaffRoutingModule } from './staff-routing.module';
 import { RolesRoutingModule } from '../roles/roles-routing.module';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { Router, RouterModule } from '@angular/router';
     FormsModule,  
     RolesRoutingModule,
     RouterModule,
+    SharedModule,
   ]
 })
 export class StaffModule { }
