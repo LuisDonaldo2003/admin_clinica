@@ -306,6 +306,43 @@ export class DataService {
           ],
         },
         {
+          menuValue: 'Especialidades',
+          hasSubRoute: true,
+          showSubRoute: false,
+          base: 'specialtys',
+          img: 'assets/img/icons/menu-icon-06.svg',
+          subMenus: [
+            {
+              menuValue: 'Especialidad List',
+              route: routes.departmentList,
+              base: routes.departmentList,
+              permision: 'list_specialty',
+              show_nav: true,
+            },
+            {
+              menuValue: 'Add Especialidad',
+              route: routes.addDepartment,
+              base: routes.addDepartment,
+              permision: 'register_specialty',
+              show_nav: true,
+            },
+            {
+              menuValue: 'Edit Especialidad',
+              route: '',
+              base: '',
+              permision: 'edit_specialty',
+              show_nav: false,
+            },
+            {
+              menuValue: 'Delete Especialidad',
+              route: '',
+              base: '',
+              permision: 'delete_specialty',
+              show_nav: false,
+            },
+          ],
+        },
+        {
           menuValue: 'Doctors',
           hasSubRoute: true,
           showSubRoute: false,
@@ -393,7 +430,6 @@ export class DataService {
             },
           ],
         },
-        
         {
           menuValue: 'Appointments',
           hasSubRoute: true,
@@ -402,17 +438,17 @@ export class DataService {
           img: 'assets/img/icons/menu-icon-04.svg',
           subMenus: [
             {
+              menuValue: 'Register Appointment',
+              route: routes.addAppointment,
+              base: routes.addAppointment,
+              permision: 'register_appointment',
+              show_nav: true,
+            },
+            {
               menuValue: 'Appointment List',
               route: routes.appointmentList,
               base: routes.appointmentList,
               permision: 'list_appointment',
-              show_nav: true,
-            },
-            {
-              menuValue: 'Book Appointment',
-              route: routes.addAppointment,
-              base: routes.addAppointment,
-              permision: 'register_appointment',
               show_nav: true,
             },
             {
@@ -431,43 +467,43 @@ export class DataService {
             },
           ],
         },
-        {
-          menuValue: 'Especialidades',
-          hasSubRoute: true,
-          showSubRoute: false,
-          base: 'specialtys',
-          img: 'assets/img/icons/menu-icon-06.svg',
-          subMenus: [
-            {
-              menuValue: 'Especialidad List',
-              route: routes.departmentList,
-              base: routes.departmentList,
-              permision: 'list_specialty',
-              show_nav: true,
-            },
-            {
-              menuValue: 'Add Especialidad',
-              route: routes.addDepartment,
-              base: routes.addDepartment,
-              permision: 'register_specialty',
-              show_nav: true,
-            },
-            {
-              menuValue: 'Edit Especialidad',
-              route: '',
-              base: '',
-              permision: 'edit_specialty',
-              show_nav: false,
-            },
-            {
-              menuValue: 'Delete Especialidad',
-              route: '',
-              base: '',
-              permision: 'delete_specialty',
-              show_nav: false,
-            },
-          ],
-        },
+        // {
+        //   menuValue: 'Especialidades',
+        //   hasSubRoute: true,
+        //   showSubRoute: false,
+        //   base: 'specialtys',
+        //   img: 'assets/img/icons/menu-icon-06.svg',
+        //   subMenus: [
+        //     {
+        //       menuValue: 'Especialidad List',
+        //       route: routes.departmentList,
+        //       base: routes.departmentList,
+        //       permision: 'list_specialty',
+        //       show_nav: true,
+        //     },
+        //     {
+        //       menuValue: 'Add Especialidad',
+        //       route: routes.addDepartment,
+        //       base: routes.addDepartment,
+        //       permision: 'register_specialty',
+        //       show_nav: true,
+        //     },
+        //     {
+        //       menuValue: 'Edit Especialidad',
+        //       route: '',
+        //       base: '',
+        //       permision: 'edit_specialty',
+        //       show_nav: false,
+        //     },
+        //     {
+        //       menuValue: 'Delete Especialidad',
+        //       route: '',
+        //       base: '',
+        //       permision: 'delete_specialty',
+        //       show_nav: false,
+        //     },
+        //   ],
+        // },
         {
           menuValue: 'Pagos',
           hasSubRoute: true,

@@ -31,6 +31,8 @@ export class ListStaffNComponent {
     public totalPages = 0;
     public role_generals: any = [];
     public staff_selected: any;
+    public user:any;
+
   
     public routes = {
       addDoctor: '/medical/roles/add-role',
@@ -41,6 +43,8 @@ export class ListStaffNComponent {
   
     ngOnInit() {
       this.getTableData();
+      this.user = this.staffService.authService.user;
+
     }
   
     private getTableData(): void {
@@ -65,6 +69,16 @@ export class ListStaffNComponent {
         }
       );
     }
+
+    isPermision(permission:string){
+      if(this.user.roles.includes('Super-Admin')){
+        return true;
+      }
+      if(this.user.permissions.includes(permission)){
+        return true;
+      }
+      return false;
+    }
     
   
     getTableDataGeneral() {
@@ -82,40 +96,53 @@ export class ListStaffNComponent {
       this.calculateTotalPages(this.totalData, this.pageSize);
     }
   
-    selectUser(rol: any) {
-      this.staff_selected = rol;
+    selectUser(user: any) {
+      if (!user || !user.id) {
+        console.error("Usuario inválido seleccionado para eliminación.");
+        return;
+      }
+      console.log(`Usuario seleccionado para eliminar: ${user.name} con ID ${user.id}`);
+      this.staff_selected = user;
     }
+    
   
     deleteUser() {
-
-      // if (!this.staff_selected) return;
-      
-      // console.log(`Eliminando el rol: ${this.staff_selected.name}`);
-      
-      // this.staffService.deleteRoles(this.staff_selected.id).subscribe(
-      //   (resp: any) => {
-      //     console.log("Rol eliminado con éxito:", resp);
-  
-      //     // Filtrar la lista de roles para eliminarlo visualmente sin recargar
-      //     this.usersList = this.usersList.filter((role: any) => role.id !== this.staff_selected.id);
-      //     this.dataSource = new MatTableDataSource<any>(this.usersList);
-  
-      //     // Cerrar el modal después de eliminar
-      //     const modalId = `#delete_patient-${this.staff_selected.id}`;
-      //     (document.querySelector(modalId) as HTMLElement)?.classList.remove('show');
-      //     document.body.classList.remove('modal-open');
-      //     const backdrop = document.querySelector('.modal-backdrop');
-      //     if (backdrop) {
-      //       backdrop.remove();
-      //     }
-  
-      //     this.staff_selected = null;
-      //   },
-      //   (error) => {
-      //     console.error("Error al eliminar el rol:", error);
-      //   }
-      // );
+      if (!this.staff_selected || !this.staff_selected.id) {
+        console.error("No se ha seleccionado ningún usuario válido para eliminar.");
+        return;
+      }
+    
+      console.log(`Eliminando al usuario: ${this.staff_selected.name} con ID ${this.staff_selected.id}`);
+    
+      this.staffService.deleteUser(this.staff_selected.id).subscribe(
+        (resp: any) => {
+          console.log("Usuario eliminado con éxito:", resp);
+    
+          // Filtrar la lista de usuarios para eliminarlo visualmente sin recargar la página
+          this.usersList = this.usersList.filter((user: any) => user.id !== this.staff_selected.id);
+          this.dataSource = new MatTableDataSource<any>(this.usersList);
+    
+          // Cerrar el modal manualmente
+          const modalId = `#delete_staff-${this.staff_selected.id}`;
+          const modalElement = document.querySelector(modalId) as HTMLElement;
+          if (modalElement) {
+            modalElement.classList.remove('show');
+          }
+          document.body.classList.remove('modal-open');
+          const backdrop = document.querySelector('.modal-backdrop');
+          if (backdrop) {
+            backdrop.remove();
+          }
+    
+          // Resetear la variable del usuario seleccionado
+          this.staff_selected = null;
+        },
+        (error) => {
+          console.error("Error al eliminar el usuario:", error);
+        }
+      );
     }
+    
   
     public searchData(value: any): void {
       this.dataSource.filter = value.trim().toLowerCase();

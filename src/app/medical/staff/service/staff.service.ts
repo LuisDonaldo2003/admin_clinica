@@ -42,4 +42,9 @@ export class StaffService {
     let URL = URL_SERVICIOS + '/staffs/' + staff_id; 
     return this.http.post(URL,data, {headers: headers});
   }
+  deleteUser(staff_id:string){
+    let headers = new HttpHeaders({'Authorization': 'Bearer '+this.authService.token});
+    let URL = URL_SERVICIOS+"/staffs/"+staff_id;
+    return this.http.delete(URL,{headers: headers});
+  }
 }
