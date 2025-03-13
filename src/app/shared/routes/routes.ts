@@ -261,7 +261,7 @@ export class routes {
     return this.baseUrl + '/payroll/edit-salary';
   }
   public static get salary(): string {
-    return this.baseUrl + '/payroll/salary';
+    return this.baseUrl + '/appointment-pay/list';
   }
   public static get salaryView(): string {
     return this.baseUrl + '/payroll/salary-view';
