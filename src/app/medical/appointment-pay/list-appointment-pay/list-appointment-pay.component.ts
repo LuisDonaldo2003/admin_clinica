@@ -9,6 +9,7 @@ import { AppointmentPayService } from '../service/appointment-pay.service';
 })
 export class ListAppointmentPayComponent {
 
+
   public searchDataValue:string = '';
   public searchDataDoctor:string = '';
   public selectedValue:string = '';
@@ -69,9 +70,8 @@ export class ListAppointmentPayComponent {
       this.dataSource = new MatTableDataSource<any>(this.appointmentList);
       this.calculateTotalPages(this.totalData, this.pageSize);
     })
-
-
   }
+
 
   getTableDataGeneral() {
     this.appointmentList = [];
@@ -324,6 +324,8 @@ export class ListAppointmentPayComponent {
     }
   }
 
+
+  
   filter(){
     //
   }

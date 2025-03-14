@@ -145,9 +145,15 @@
                                       <td>${{ data.amount - getTotalPaid(data.payments) }} MXN</td>
                                      
                                     </tr>
-                                    <td>
-                                        <button type="button" class="btn btn-success" data-bs-toggle="modal" [attr.data-bs-target]="'#add_payment-' + data.id" (click)="clearData()">Nuevo Pago</button>
-                                    </td>
+                                    <tr>
+                                        <td colspan="9" class="text-start">
+                                            <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal"
+                                                [attr.data-bs-target]="'#add_payment-' + data.id"
+                                                (click)="clearData()">+ Nuevo Pago
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    
                                     
                                         <tr *ngFor="let payment of data.payments;let i = index" style="border-bottom: 1px solid #2e37a4;">
                                             <td></td>
@@ -155,7 +161,6 @@
                                             <td></td>
                                             <td></td>
                                             <td></td>
-
                                             <td>{{ payment.method_payment }}</td>
                                             <td>${{ payment.amount }} MXN</td>
                                             <td></td>
@@ -176,7 +181,7 @@
                                                         <div class="modal-content">
                                                             <div class="modal-body text-center">
                                                                 <img src="assets/img/sent.png" alt="" width="50" height="46">
-                                                                <h3 *ngIf="payment_selected">Are you sure want to delete this payment {{ payment_selected.id }}?</h3>
+                                                                <h3 *ngIf="payment_selected">Are you sure want to delete this payment {{ payment_selected.method_payment }}?</h3>
                                                                 <div class="m-t-20"> <a href="javascript:void(0);" class="btn btn-white me-1" data-bs-dismiss="modal">Close</a>
                                                                     <button type="submit" class="btn btn-danger" (click)="deleteAppointmentPay(data)">Delete</button>
                                                                 </div>
@@ -267,12 +272,6 @@
                                                                         </mat-option>
                                                                         <mat-option value="TRANSFERENCIA">
                                                                             TRANSFERENCIA
-                                                                        </mat-option>
-                                                                        <mat-option value="YAPE">
-                                                                            YAPE
-                                                                        </mat-option>
-                                                                        <mat-option value="PLIN">
-                                                                            PLIN
                                                                         </mat-option>
                                                                     </mat-select>
                                                                 </div>
