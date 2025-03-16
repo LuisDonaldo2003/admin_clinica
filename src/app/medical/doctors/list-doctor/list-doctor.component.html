@@ -35,6 +35,9 @@
                                           </div>
                                           <div class="add-group">
                                               <a routerLink="/doctors/register" class="btn btn-primary add-pluss ms-2"><img src="assets/img/icons/plus.svg" alt=""></a>
+                                              <a href="javascript:void(0);" (click)="refreshData()" class="btn btn-primary doctor-refresh ms-2">
+                                                <img src="assets/img/icons/re-fresh.svg" alt="">
+                                            </a>     
                                           </div>
                                       </div>
                                   </div>
@@ -72,6 +75,7 @@
                                                   <a class="dropdown-item" href="javascript:void(0);" (click)="selectUser(data)" data-bs-toggle="modal" 
                                                   [attr.data-bs-target]="'#delete_staff-'+data.id">
                                                   <i class="fa fa-trash-alt m-r-5"></i> Delete</a>
+                                                  <a class="dropdown-item" [routerLink]="[ '/doctors/list/profile/', data.id ]">+ Doctor Profile</a>
                                               </div>
                                           </div>
                                       </td>
@@ -91,6 +95,7 @@
                                         </div>
                                       </div>
 
+                                  
                                   </tr>
                               </tbody>
                           </table>

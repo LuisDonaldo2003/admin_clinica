@@ -51,6 +51,8 @@ export class ListDoctorComponent {
 
   }
 
+  
+
   getTableDataGeneral() {
     this.usersList = [];
     this.serialNumberArray = [];
@@ -189,5 +191,9 @@ export class ListDoctorComponent {
       // 2
       // 10 - 20
     }
+  }
+  public refreshData(): void {
+    console.log("Actualizando lista de roles...");
+    this.getTableData(); // Hacer nueva petición a la API para obtener los datos más recientes
   }
 }

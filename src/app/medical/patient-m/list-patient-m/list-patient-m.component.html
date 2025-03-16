@@ -82,6 +82,7 @@
                                                     <a class="dropdown-item" href="javascript:void(0);" (click)="selectUser(data)" data-bs-toggle="modal" 
                                                     [attr.data-bs-target]="'#delete_staff-'+data.id"
                                                     ><i class="fa fa-trash-alt m-r-5"></i> Delete</a>
+                                                    <a class="dropdown-item" [routerLink]="[ '/patient-m/list/profile/', data.id ]" >+ Perfil Paciente</a>
                                                 </div>
                                             </div>
                                         </td>
