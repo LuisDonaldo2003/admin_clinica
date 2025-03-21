@@ -42,7 +42,7 @@ export class AddDoctorComponent {
       class: 'table-secondary'
     },
     {
-      day: 'Miercoles',
+      day: 'Miércoles',
       class: 'table-success'
     },
     {

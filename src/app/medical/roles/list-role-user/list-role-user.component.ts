@@ -33,6 +33,8 @@ export class ListRoleUserComponent {
   public role_generals: any = [];
   public role_selected: any;
 
+  public user:any;
+
   public routes = {
     addDoctor: '/medical/roles/add-role',
     editDoctor: '/medical/roles/edit-role'
@@ -41,7 +43,18 @@ export class ListRoleUserComponent {
   constructor(public RoleService: RolesService) { }
 
   ngOnInit() {
+    this.user = this.RoleService.authService.user;
     this.getTableData();
+  }
+
+  isPermision(permission:string){
+    if(this.user.roles.includes('Super-Admin')){
+      return true;
+    }
+    if(this.user.permissions.includes(permission)){
+      return true;
+    }
+    return false;
   }
 
   private getTableData(): void {

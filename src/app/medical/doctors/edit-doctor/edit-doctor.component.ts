@@ -43,7 +43,7 @@ export class EditDoctorComponent {
       class: 'table-secondary'
     },
     {
-      day: 'Miercoles',
+      day: 'Miércoles',
       class: 'table-success'
     },
     {
