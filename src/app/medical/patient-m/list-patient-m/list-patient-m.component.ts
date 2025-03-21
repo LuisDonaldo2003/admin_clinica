@@ -28,6 +28,8 @@ export class ListPatientMComponent {
 
   public patient_generals:any = [];
   public patient_selected:any;
+  public user:any;
+
   constructor(
     public patientService: PatientMService,
   ){
@@ -35,7 +37,20 @@ export class ListPatientMComponent {
   }
   ngOnInit() {
     this.getTableData();
+    this.user = this.patientService.authService.user;
+
   }
+
+  isPermision(permission:string){
+    if(this.user.roles.includes('Super-Admin')){
+      return true;
+    }
+    if(this.user.permissions.includes(permission)){
+      return true;
+    }
+    return false;
+  }
+  
   private getTableData(page=1): void {
     this.patientsList = [];
     this.serialNumberArray = [];

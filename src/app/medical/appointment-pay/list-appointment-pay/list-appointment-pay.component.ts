@@ -44,6 +44,8 @@ export class ListAppointmentPayComponent {
   public text_validation:string = '';
 
   public payment_selected:any;
+  public user:any;
+
   constructor(
     public appointmentPayService: AppointmentPayService,
   ){
@@ -55,7 +57,30 @@ export class ListAppointmentPayComponent {
     this.appointmentPayService.listConfig().subscribe((resp:any) => {
       this.specialities = resp.specialities;
     })
+    this.user = this.appointmentPayService.authService.user;
+
   }
+
+  isPermited(){
+    let band = false;
+    this.user.roles.forEach((rol:any) => {
+      if((rol).toUpperCase().indexOf("DOCTOR") != -1){
+        band = true;
+      }
+    });
+    return band;
+  }
+  
+  isPermision(permission:string){
+    if(this.user.roles.includes('Super-Admin')){
+      return true;
+    }
+    if(this.user.permissions.includes(permission)){
+      return true;
+    }
+    return false;
+  }
+  
   private getTableData(page=1): void {
     this.appointmentList = [];
     this.serialNumberArray = [];
