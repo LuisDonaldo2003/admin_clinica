@@ -1,10 +1,10 @@
 <div class="page-wrapper">
     <div class="content">
-    
+
         <div class="row">
             <div class="col-sm-7 col-6">
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a [routerLink]="routes.adminDashboard">Dashboard </a></li>
+                    <li class="breadcrumb-item"><a [routerLink]="routes.adminDashboard">Dashboard</a></li>
                     <li class="breadcrumb-item"><i class="feather icon-chevron-right"></i></li>
                     <li class="breadcrumb-item active">My Profile</li>
                 </ul>
@@ -14,22 +14,22 @@
                 <a [routerLink]="routes.editProfile" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Edit Profile</a>
             </div>
         </div>
-        <div class="card-box profile-header">
+        <div class="card-box profile-header" *ngIf="user">
             <div class="row">
                 <div class="col-md-12">
                     <div class="profile-view">
                         <div class="profile-img-wrap">
                             <div class="profile-img">
-                                <a href="javascript:void(0);"><img class="avatar" src="assets/img/doctor-03.jpg" alt=""></a>
+                                <a href="javascript:void(0);"><img class="avatar" [src]="user.avatar || 'assets/img/doctor-03.jpg'" alt=""></a>
                             </div>
                         </div>
                         <div class="profile-basic">
                             <div class="row">
                                 <div class="col-md-5">
                                     <div class="profile-info-left">
-                                        <h3 class="user-name m-t-0 mb-0">Cristina Groves</h3>
-                                        <small class="text-muted">Gynecologist</small>
-                                        <div class="staff-id">Employee ID : DR-0001</div>
+                                        <h3 class="user-name m-t-0 mb-0">{{user.name}} {{user.surname}}</h3>
+                                        <small class="text-muted">{{getRole()}}</small>
+                                        <div class="staff-id">Employee ID : {{user?.id}}</div>
                                         <div class="staff-msg"><a [routerLink]="routes.chat" class="btn btn-primary">Send Message</a></div>
                                     </div>
                                 </div>
@@ -37,33 +37,41 @@
                                     <ul class="personal-info">
                                         <li>
                                             <span class="title">Phone:</span>
-                                            <span class="text"><a href="">770-889-6484</a></span>
+                                            <span class="text">{{user.mobile}}</span>
                                         </li>
                                         <li>
                                             <span class="title">Email:</span>
-                                            <span class="text"><a href="">cristinagroves&#64;example.com</a></span>
+                                            <span class="text">{{user.email}}</span>
                                         </li>
                                         <li>
                                             <span class="title">Birthday:</span>
-                                            <span class="text">3rd March</span>
+                                            <span class="text">{{user.birth_date | date}}</span>
                                         </li>
                                         <li>
                                             <span class="title">Address:</span>
-                                            <span class="text">714 Burwell Heights Road, Bridge City, TX, 77611</span>
+                                            <span class="text">{{user.address}}</span>
                                         </li>
                                         <li>
                                             <span class="title">Gender:</span>
-                                            <span class="text">Female</span>
+                                            <span class="text">{{user.gender}}</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Education:</span>
+                                            <span class="text">{{user.education}}</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Designation:</span>
+                                            <span class="text">{{user.designation}}</span>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                    </div>                        
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="profile-tabs">
+        <div class="profile-tabs" *ngIf="user">
             <ul class="nav nav-tabs nav-tabs-bottom">
                 <li class="nav-item"><a class="nav-link active" href="#about-cont" data-bs-toggle="tab">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="#bottom-tab2" data-bs-toggle="tab">Profile</a></li>
@@ -72,81 +80,49 @@
 
             <div class="tab-content">
                 <div class="tab-pane show active" id="about-cont">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card-box">
-                    <h3 class="card-title">Education Informations</h3>
-                    <div class="experience-box">
-                        <ul class="experience-list">
-                            <li>
-                                <div class="experience-user">
-                                    <div class="before-circle"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card-box">
+                                <h3 class="card-title">Education Informations</h3>
+                                <div class="experience-box">
+                                    <ul class="experience-list">
+                                        <li>
+                                            <div class="experience-user">
+                                                <div class="before-circle"></div>
+                                            </div>
+                                            <div class="experience-content">
+                                                <div class="timeline-content">
+                                                    <a href="#/" class="name">{{user.education}}</a>
+                                                    <div>{{user.designation}}</div>
+                                                    <span class="time">2001 - 2003</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <!-- Otros elementos de la lista de experiencia -->
+                                    </ul>
                                 </div>
-                                <div class="experience-content">
-                                    <div class="timeline-content">
-                                        <a href="#/" class="name">International College of Medical Science (UG)</a>
-                                        <div>MBBS</div>
-                                        <span class="time">2001 - 2003</span>
-                                    </div>
+                            </div>
+                            <div class="card-box">
+                                <h3 class="card-title">Experience</h3>
+                                <div class="experience-box">
+                                    <ul class="experience-list">
+                                        <li>
+                                            <div class="experience-user">
+                                                <div class="before-circle"></div>
+                                            </div>
+                                            <div class="experience-content">
+                                                <div class="timeline-content">
+                                                    <a href="#/" class="name">Consultant Gynecologist</a>
+                                                    <span class="time">Jan 2014 - Present (4 years 8 months)</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <!-- Otros elementos de la lista de experiencia -->
+                                    </ul>
                                 </div>
-                            </li>
-                            <li>
-                                <div class="experience-user">
-                                    <div class="before-circle"></div>
-                                </div>
-                                <div class="experience-content">
-                                    <div class="timeline-content">
-                                        <a href="#/" class="name">International College of Medical Science (PG)</a>
-                                        <div>MD - Obstetrics & Gynaecology</div>
-                                        <span class="time">1997 - 2001</span>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="card-box ">
-                    <h3 class="card-title">Experience</h3>
-                    <div class="experience-box">
-                        <ul class="experience-list">
-                            <li>
-                                <div class="experience-user">
-                                    <div class="before-circle"></div>
-                                </div>
-                                <div class="experience-content">
-                                    <div class="timeline-content">
-                                        <a href="#/" class="name">Consultant Gynecologist</a>
-                                        <span class="time">Jan 2014 - Present (4 years 8 months)</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="experience-user">
-                                    <div class="before-circle"></div>
-                                </div>
-                                <div class="experience-content">
-                                    <div class="timeline-content">
-                                        <a href="#/" class="name">Consultant Gynecologist</a>
-                                        <span class="time">Jan 2009 - Present (6 years 1 month)</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="experience-user">
-                                    <div class="before-circle"></div>
-                                </div>
-                                <div class="experience-content">
-                                    <div class="timeline-content">
-                                        <a href="#/" class="name">Consultant Gynecologist</a>
-                                        <span class="time">Jan 2004 - Present (5 years 2 months)</span>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
                 </div>
                 <div class="tab-pane" id="bottom-tab2">
                     Tab content 2
