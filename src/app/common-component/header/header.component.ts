@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   public miniSidebar  = false;
   public addClass = false;
   public user:any;
-  public profileData: any;
+  public profileData: any = {}; // Inicializar profileData
   public roles: string[] = [];
 
   constructor(public router: Router, private sideBar: SideBarService, public auth: AuthService, public profileService: ProfileService) {

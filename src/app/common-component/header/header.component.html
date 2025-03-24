@@ -95,7 +95,7 @@
                     <span>{{getRole()}}</span>
                 </div>
                 <span class="user-img">
-                    <img class="rounded-circle" [src]="profileData.avatar || 'assets/img/user-06.jpg'" alt="Admin">
+                    <img class="rounded-circle" [src]="profileData?.avatar || 'assets/img/user-06.jpg'" alt="Admin">
                 </span>
             </a>
             <div class="dropdown-menu">
@@ -106,9 +106,9 @@
                 <!--[routerLink]="routes.login"-->
             </div>
         </li>
-        <li class="nav-item ">
+        <!-- <li class="nav-item ">
             <a [routerLink]="routes.settings"  class="hasnotifications nav-link"><img src="assets/img/icons/setting-icon-01.svg" alt=""> </a>
-        </li>
+        </li> -->
     </ul>
     <div class="dropdown mobile-user-menu float-end">
         <a href="javascript:void(0);" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></a>
