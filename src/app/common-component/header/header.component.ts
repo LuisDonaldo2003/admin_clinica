@@ -15,6 +15,8 @@ export class HeaderComponent {
   public miniSidebar  = false;
   public addClass = false;
   public user:any;
+  public profileData: any;
+
 
   constructor(public router: Router,private sideBar: SideBarService, public auth: AuthService) {
     this.sideBar.toggleSideBar.subscribe((res: string) => {
