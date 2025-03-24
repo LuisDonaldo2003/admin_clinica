@@ -1,24 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/auth/auth.service';
 import { routes } from 'src/app/shared/routes/routes';
 import { SideBarService } from 'src/app/shared/side-bar/side-bar.service';
+import { ProfileService } from 'src/app/core/profile/service/profile.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   public routes = routes;
   public openBox = false;
   public miniSidebar  = false;
   public addClass = false;
   public user:any;
   public profileData: any;
+  public roles: string[] = [];
 
-
-  constructor(public router: Router,private sideBar: SideBarService, public auth: AuthService) {
+  constructor(public router: Router, private sideBar: SideBarService, public auth: AuthService, public profileService: ProfileService) {
     this.sideBar.toggleSideBar.subscribe((res: string) => {
       if (res == 'true') {
         this.miniSidebar = true;
@@ -29,6 +30,17 @@ export class HeaderComponent {
     let USER = localStorage.getItem("user");
     this.user = JSON.parse(USER ? USER : '');
     console.log(this.user);
+  }
+
+  ngOnInit() {
+    this.getProfileData();
+  }
+
+  private getProfileData(): void {
+    this.profileService.getProfile().subscribe((resp: any) => {
+      this.profileData = resp.data;
+      this.roles = resp.roles;
+    });
   }
 
   getRole(){
