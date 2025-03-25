@@ -273,7 +273,7 @@ export class DataService {
           menuValue: 'Staff',
           hasSubRoute: true,
           showSubRoute: false,
-          base: 'staff',
+          base: 'staffs',
           img: 'assets/img/icons/menu-icon-08.svg',
           subMenus: [
             {
@@ -356,17 +356,17 @@ export class DataService {
           img: 'assets/img/icons/menu-icon-02.svg',
           subMenus: [
             {
-              menuValue: 'Doctor List',
-              route: routes.doctorsList,
-              base: routes.doctorsList,
-              permision: 'list_doctor',
-              show_nav: true,
-            },
-            {
               menuValue: 'Add Doctor',
               route: routes.addDoctor,
               base: routes.addDoctor,
               permision: 'register_doctor',
+              show_nav: true,
+            },
+            {
+              menuValue: 'Doctor List',
+              route: routes.doctorsList,
+              base: routes.doctorsList,
+              permision: 'list_doctor',
               show_nav: true,
             },
             {
@@ -400,17 +400,17 @@ export class DataService {
           img: 'assets/img/icons/menu-icon-03.svg',
           subMenus: [
             {
-              menuValue: 'Patients List',
-              route: routes.patientsList,
-              base: routes.patientsList,
-              permision: 'list_patient',
-              show_nav: true,
-            },
-            {
               menuValue: 'Add Patients',
               route: routes.addPatient,
               base: routes.addPatient,
               permision: 'register_patient',
+              show_nav: true,
+            },
+            {
+              menuValue: 'Patients List',
+              route: routes.patientsList,
+              base: routes.patientsList,
+              permision: 'list_patient',
               show_nav: true,
             },
             {
@@ -512,7 +512,7 @@ export class DataService {
               menuValue: 'Add Pagos',
               route: '',
               base: '',
-              permision: 'Add_payment',
+              permision: 'add_payment',
               show_nav: false,
             },
           ],
@@ -540,6 +540,7 @@ export class DataService {
         //   show_nav: true,
         //   subMenus: [],
         // },
+        
         // {
         //   menuValue: 'Reports',
         //   hasSubRoute: true,
@@ -563,17 +564,6 @@ export class DataService {
         //     },
         //   ],
         // },
-        {
-          menuValue: 'Settings',
-          route: routes.settings,
-          hasSubRoute: false,
-          showSubRoute: false,
-          img: 'assets/img/icons/menu-icon-16.svg',
-          base: 'settings',
-          permision: 'settings',
-          show_nav: true,
-          subMenus: [],
-        },
       ],
     },
   ];
